@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Next from "./Next";
 
-const Details = ({ details, setDetails, crr_option, setCrr_option }) => {
+const Details = ({
+  details,
+  setDetails,
+  crr_option,
+  setCrr_option,
+  permalink,
+  setPermalink,
+}) => {
   const [counter, setCounter] = useState(1);
   const [question, setQuestion] = useState("");
   const [option1, setOption1] = useState("");
@@ -34,7 +41,9 @@ const Details = ({ details, setDetails, crr_option, setCrr_option }) => {
       setL1("");
     }
   };
-
+  useEffect(() => {
+    setPermalink(Math.floor(Math.random() * 1000000));
+  }, []);
   return (
     <>
       <div className="details-cont">
@@ -114,10 +123,10 @@ const Details = ({ details, setDetails, crr_option, setCrr_option }) => {
           <button
             className="btn btn-create"
             onClick={() => {
-              localStorage.setItem(Math.floor(Math.random() * 1000000), JSON.stringify(details));
+              localStorage.setItem(permalink, JSON.stringify(details));
             }}
           >
-            <Link className="Link" to="/mcq">
+            <Link className="Link" to="/quizSubmitted">
               Create
             </Link>
           </button>

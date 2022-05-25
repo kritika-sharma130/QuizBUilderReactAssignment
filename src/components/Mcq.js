@@ -1,8 +1,12 @@
 import React, { useState, useRef } from "react";
 
-const Mcq = ({ details, crr_option }) => {
+const Mcq = ({ crr_option }) => {
   let res = [];
   let list = [];
+  const query = window.location.href.split("/").at(-1);
+  const details = JSON.parse(localStorage.getItem(query));
+  console.log(details);
+
   const [data, setData] = useState([]);
   const [percent, setPercent] = useState(0);
   const [answered, setAnswered] = useState(false);
@@ -52,6 +56,7 @@ const Mcq = ({ details, crr_option }) => {
   };
   //let permalink = Math.floor(Math.random() * 1000000);
   //console.log(permalink);
+  
   return (
     <>
       <h1>Your MCQ questions! (You can submit only once)</h1>
@@ -130,9 +135,9 @@ const Mcq = ({ details, crr_option }) => {
       </div>
       {answered && (
         <div ref={resultBox} className="result-box">
-          {data.map((result) => {
+          {data.map((result, index) => {
             return (
-              <div>
+              <div key={index}>
                 <li>{result}</li>
               </div>
             );
