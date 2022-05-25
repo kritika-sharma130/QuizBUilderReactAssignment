@@ -8,7 +8,7 @@ import QuizSubmit from "./QuizSubmit";
 function App() {
   const [details, setDetails] = useState([]);
   const [crr_option, setCrr_option] = useState([]);
-  const [permalink,setPermalink]=useState();
+  const [permalink, setPermalink] = useState();
   return (
     <div className="App">
       <Router>
@@ -20,11 +20,12 @@ function App() {
               setDetails={setDetails}
               crr_option={crr_option}
               setCrr_option={setCrr_option}
-              permalink={permalink} setPermalink={setPermalink}
+              permalink={permalink}
+              setPermalink={setPermalink}
             />
           </Route>
           <Route path="/mcq">
-            <Mcq crr_option={crr_option}  />
+            <Mcq />
           </Route>
           <Route path="/quizSubmitted">
             <QuizSubmit permalink={permalink} />

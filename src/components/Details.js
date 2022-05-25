@@ -17,7 +17,7 @@ const Details = ({
   const [option3, setOption3] = useState("");
   const [option4, setOption4] = useState("");
   const [l1, setL1] = useState();
-
+console.log(crr_option);
   const handelSubmit = (e) => {
     e.preventDefault();
     if (question && option1 && option2 && option3 && option4) {
@@ -124,6 +124,7 @@ const Details = ({
             className="btn btn-create"
             onClick={() => {
               localStorage.setItem(permalink, JSON.stringify(details));
+              localStorage.setItem(permalink+"_crr",JSON.stringify(crr_option));
             }}
           >
             <Link className="Link" to="/quizSubmitted">

@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 
-const Mcq = ({ crr_option }) => {
+const Mcq = () => {
   let res = [];
   let list = [];
   const query = window.location.href.split("/").at(-1);
   const details = JSON.parse(localStorage.getItem(query));
+  const crr_option=JSON.parse(localStorage.getItem(query+"_crr"));
   console.log(details);
 
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ const Mcq = ({ crr_option }) => {
       }
     });
   };
-
+  console.log(crr_option);
   createList();
 
   const handelClick = (e, c) => {
@@ -56,7 +57,7 @@ const Mcq = ({ crr_option }) => {
   };
   //let permalink = Math.floor(Math.random() * 1000000);
   //console.log(permalink);
-  
+
   return (
     <>
       <h1>Your MCQ questions! (You can submit only once)</h1>
